@@ -1,0 +1,35 @@
+---
+- name: get info
+  hosts: all
+  become: true
+  vars:
+    packages:
+      - git
+      - nmap
+    puser:
+      - git  
+  tasks:
+    - name: install git related packages      
+      yum:
+        name: "{{item}}"
+        state: present
+      with_items: "{{packages}}"
+
+    - name: add git user
+      user:
+        name: "{{item}}"
+        state: present
+      with_items: "{{puser}}"
+
+    - name: add .ssh to home directory
+      file:
+        path=/home/{{item}}/.ssh
+        state=directory
+        mode=0700
+        owner={{item}}
+      with_items: "{{puser}}"
+      
+#    - name: get users from linux servers from passwd        
+#      debug: 
+#        msg: "{{ item | regex_replace(':.*$') }}"
+#      loop: "{{ query('lines', 'cat /etc/passwd|grep git') }}"

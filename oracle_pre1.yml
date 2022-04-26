@@ -1,0 +1,30 @@
+---
+- name: Oracle 19c preinstall 1 oracle_pre1.yml
+  hosts: dbservers
+  become_user: root
+  become: true
+  vars:
+    preinst_packages:
+      - glibc-devel
+      - ksh
+      - libaio-devel
+      - libnsl
+      - libstdc++-devel
+      - make
+      - sysstat
+      - java
+  tasks:
+    - name: install yum packages for preinstall
+      yum: 
+        name: "{{ preinst_packages }}"
+        state: present
+    
+    - name: run oracle pre-installer
+      yum: 
+        name: "/home/admin/oracle-database-preinstall-19c-1.0-2.el8.x86_64.rpm"
+        disable_gpg_check: yes
+        state: present
+
+    - name: set oracle password - pending
+      shell: echo 'put password set process here'
+
