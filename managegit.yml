@@ -29,7 +29,7 @@
         owner={{item}}
       with_items: "{{puser}}"
       
-#    - name: get users from linux servers from passwd        
+#    - name: get users from linux servers from passwd xxx        
 #      debug: 
 #        msg: "{{ item | regex_replace(':.*$') }}"
 #      loop: "{{ query('lines', 'cat /etc/passwd|grep git') }}"

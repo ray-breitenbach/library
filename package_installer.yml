@@ -1,5 +1,5 @@
 ---
-- name: package installer - template
+- name: package installer - template 
   hosts: all
   become_user: root
   become: true

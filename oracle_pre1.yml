@@ -1,5 +1,5 @@
 ---
-- name: Oracle 19c preinstall 1 oracle_pre1.yml
+- name: Oracle 19c preinstall 1 oracle_pre1.yml 
   hosts: dbservers
   become_user: root
   become: true
