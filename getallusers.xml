@@ -1,0 +1,11 @@
+---
+- name: get all users
+  hosts: all
+  tasks:
+     - name: get users
+       command: "awk -F: '{ print $1}' /etc/passwd"
+       register: ps
+
+     - name: dump values
+       debug: 
+         msg: "{{ps.stdout_lines | sort}}"
