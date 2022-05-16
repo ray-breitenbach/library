@@ -1,0 +1,18 @@
+---
+
+- name: testr vconnect
+  hosts: centos
+  tasks:
+    - name: ping test
+      ping:
+
+    - name: ping again
+      ping:
+
+- name: another test in same package
+  hosts: centos
+  tasks: 
+    - name: ping 1
+      ping: 
+    - name: ping 2
+      ping:
